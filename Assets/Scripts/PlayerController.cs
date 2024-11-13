@@ -11,6 +11,18 @@ public class PlayerController : MonoBehaviour
         float speed = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(speed));
 
+        //Jump
+        float jump = Input.GetAxisRaw("Vertical");
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            animator.SetBool("Jump", true);
+        }
+        else
+        {
+            animator.SetBool("Jump", false);
+        }
+
+        //Flip the player
         Vector3 scale = transform.localScale;
         if (speed < 0)
         {
@@ -21,5 +33,15 @@ public class PlayerController : MonoBehaviour
             scale.x = Mathf.Abs(scale.x); 
         }
         transform.localScale = scale;
+
+        //Crouch
+        if (Input.GetKey(KeyCode.RightControl))
+        {
+            animator.SetBool("Crouch", true);
+        }
+        else
+        {
+            animator.SetBool("Crouch", false);
+        }
     }
 }
