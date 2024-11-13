@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        bool vertical = Input.GetKeyDown(KeyCode.UpArrow);
         MoveCharacter(horizontal, vertical);
         PlayMovementAnimation(horizontal, vertical);
 
@@ -46,9 +46,10 @@ public class PlayerController : MonoBehaviour
         {
             Crouch(false);
         }
+
     }
 
-    private void MoveCharacter(float horizontal, float vertical)
+    private void MoveCharacter(float horizontal, bool vertical)
     {
         //Movement
         Vector3 positon = transform.position;
@@ -56,13 +57,14 @@ public class PlayerController : MonoBehaviour
         transform.position = positon;
 
         //Jump
-        if (vertical > 0 && isGrounded)
+        if (vertical && isGrounded)
         {
-            rigidbody2D.AddForce(new Vector2(0.0f, jump), ForceMode2D.Force);
+            rigidbody2D.AddForce(new Vector2(0.0f, jump), ForceMode2D.Impulse);
         }
+
     }
 
-    private void PlayMovementAnimation(float horizontal, float vertical)
+    private void PlayMovementAnimation(float horizontal, bool vertical)
     {
         playerAnimator.SetFloat("Speed", Mathf.Abs(horizontal));
 
@@ -79,7 +81,7 @@ public class PlayerController : MonoBehaviour
         transform.localScale = scale;
 
         //Jump
-        if (vertical > 0 && isGrounded)
+        if (vertical && isGrounded)
         {
             playerAnimator.SetBool("Jump", true);
         }
