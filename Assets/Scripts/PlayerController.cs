@@ -15,9 +15,11 @@ public class PlayerController : MonoBehaviour
     private Vector2 boxColInitSize;
     private Vector2 boxColInitOffset;
 
+    private bool isGrounded = false;
+
     private void Awake()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
     }
 
     private void Start()
@@ -54,7 +56,7 @@ public class PlayerController : MonoBehaviour
         transform.position = positon;
 
         //Jump
-        if (vertical > 0)
+        if (vertical > 0 && isGrounded)
         {
             rigidbody2D.AddForce(new Vector2(0.0f, jump), ForceMode2D.Force);
         }
@@ -77,7 +79,7 @@ public class PlayerController : MonoBehaviour
         transform.localScale = scale;
 
         //Jump
-        if (vertical > 0)
+        if (vertical > 0 && isGrounded)
         {
             playerAnimator.SetBool("Jump", true);
         }
@@ -109,6 +111,22 @@ public class PlayerController : MonoBehaviour
         }
 
         playerAnimator.SetBool("Crouch", crouch);
+    }
+
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.transform.CompareTag("Platform"))
+        {
+            isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.transform.CompareTag("Platform"))
+        {
+            isGrounded = false;
+        }
     }
 
 }
