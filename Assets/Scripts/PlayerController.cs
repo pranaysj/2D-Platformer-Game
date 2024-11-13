@@ -5,13 +5,20 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
+    public float jump;
 
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private BoxCollider2D boxCol;
+    [SerializeField] private Rigidbody2D rigidbody2D;
 
     //Collider Variables
     private Vector2 boxColInitSize;
     private Vector2 boxColInitOffset;
+
+    private void Awake()
+    {
+        rigidbody2D = GetComponent<Rigidbody2D>();
+    }
 
     private void Start()
     {
@@ -22,15 +29,11 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        MoveCharacter(horizontal);
-        PlayMovementAnimation(horizontal);
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+        MoveCharacter(horizontal, vertical);
+        PlayMovementAnimation(horizontal, vertical);
 
-        //Jump
-        float jump = Input.GetAxis("Vertical");
-        PlayJumpAnimation(jump);
-
-        
 
         //Crouch
         if (Input.GetKey(KeyCode.LeftControl))
@@ -43,14 +46,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void MoveCharacter(float horizontal)
+    private void MoveCharacter(float horizontal, float vertical)
     {
+        //Movement
         Vector3 positon = transform.position;
         positon.x += horizontal * speed * Time.deltaTime;
         transform.position = positon;
+
+        //Jump
+        if (vertical > 0)
+        {
+            rigidbody2D.AddForce(new Vector2(0.0f, jump), ForceMode2D.Force);
+        }
     }
 
-    private void PlayMovementAnimation(float horizontal)
+    private void PlayMovementAnimation(float horizontal, float vertical)
     {
         playerAnimator.SetFloat("Speed", Mathf.Abs(horizontal));
 
@@ -65,6 +75,16 @@ public class PlayerController : MonoBehaviour
             scale.x = Mathf.Abs(scale.x);
         }
         transform.localScale = scale;
+
+        //Jump
+        if (vertical > 0)
+        {
+            playerAnimator.SetBool("Jump", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("Jump", false);
+        }
     }
 
     public void Crouch(bool crouch)
@@ -91,12 +111,4 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetBool("Crouch", crouch);
     }
 
-
-    public void PlayJumpAnimation(float vertical)
-    {
-        if (vertical > 0)
-        {
-            playerAnimator.SetTrigger("Jump");
-        }
-    }
 }
