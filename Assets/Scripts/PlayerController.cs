@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public float speed;
+
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private BoxCollider2D boxCol;
 
@@ -20,24 +22,15 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        float speed = Input.GetAxisRaw("Horizontal");
-        playerAnimator.SetFloat("Speed", Mathf.Abs(speed));
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        MoveCharacter(horizontal);
+        PlayMovementAnimation(horizontal);
 
         //Jump
         float jump = Input.GetAxis("Vertical");
         PlayJumpAnimation(jump);
 
-        //Flip the player
-        Vector3 scale = transform.localScale;
-        if (speed < 0)
-        {
-            scale.x = -1.0f * Mathf.Abs(scale.x);
-        }
-        else if (speed > 0)
-        {
-            scale.x = Mathf.Abs(scale.x); 
-        }
-        transform.localScale = scale;
+        
 
         //Crouch
         if (Input.GetKey(KeyCode.LeftControl))
@@ -48,6 +41,30 @@ public class PlayerController : MonoBehaviour
         {
             Crouch(false);
         }
+    }
+
+    private void MoveCharacter(float horizontal)
+    {
+        Vector3 positon = transform.position;
+        positon.x += horizontal * speed * Time.deltaTime;
+        transform.position = positon;
+    }
+
+    private void PlayMovementAnimation(float horizontal)
+    {
+        playerAnimator.SetFloat("Speed", Mathf.Abs(horizontal));
+
+        //Flip the player
+        Vector3 scale = transform.localScale;
+        if (horizontal < 0)
+        {
+            scale.x = -1.0f * Mathf.Abs(scale.x);
+        }
+        else if (horizontal > 0)
+        {
+            scale.x = Mathf.Abs(scale.x);
+        }
+        transform.localScale = scale;
     }
 
     public void Crouch(bool crouch)
