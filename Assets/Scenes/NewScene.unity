@@ -247,7 +247,7 @@ Transform:
   m_GameObject: {fileID: 195019911}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.023, y: -0.638, z: 0}
+  m_LocalPosition: {x: -0.003000021, y: -0.638, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -376,7 +376,7 @@ PrefabInstance:
     - target: {fileID: 6859850926154100629, guid: ae84ecb3e457341aea2632f706b0c673,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 6859850926154100629, guid: ae84ecb3e457341aea2632f706b0c673,
         type: 3}
@@ -541,7 +541,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4469c6b6203b2a04f953c33b58d517fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1637071463}
+  playerAnimator: {fileID: 1637071463}
+  boxCol: {fileID: 1637071462}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
