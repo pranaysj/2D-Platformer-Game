@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private BoxCollider2D boxCol;
     [SerializeField] private Rigidbody2D rigidbody2D;
+
+    [SerializeField] private ScoreController scoreController;
 
     //Collider Variables
     private Vector2 boxColInitSize;
@@ -140,4 +143,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void PickUpKey()
+    {
+        Debug.Log("Key is picked.");
+        scoreController.IncreaseScore(10);
+    }
 }
