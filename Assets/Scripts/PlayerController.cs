@@ -3,17 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
     public float speed;
     public float jump;
+    public int playerHealth = 3;
 
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private BoxCollider2D boxCol;
     [SerializeField] private Rigidbody2D rigidbody2D;
 
     [SerializeField] private ScoreController scoreController;
+
+    public TextMeshProUGUI playerHealthText;
 
     //Collider Variables
     private Vector2 boxColInitSize;
@@ -151,6 +155,12 @@ public class PlayerController : MonoBehaviour
 
     public void KillPlayer()
     {
-        //SceneManager.LoadScene("NewScene");
+        Debug.Log("HIT.");
+        playerHealth--;
+        playerHealthText.text = "Health : " + playerHealth + " / 3";
+        if (playerHealth == 0)
+        {
+            SceneManager.LoadScene("NewScene");
+        }
     }
 }
