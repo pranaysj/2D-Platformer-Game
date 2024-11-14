@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 175837397}
+  - component: {fileID: 175837398}
   m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
@@ -161,6 +162,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 41.899994}
   m_SizeDelta: {x: 200, y: 259.8}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &175837398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175837396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16c6b827f1813cd4c8998e2824279673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restartButton: {fileID: 1850518362}
 --- !u!1 &182100998
 GameObject:
   m_ObjectHideFlags: 0
@@ -3374,6 +3388,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4026498437625800431, guid: ae84ecb3e457341aea2632f706b0c673,
         type: 3}
+      propertyPath: restartPanel
+      value: 
+      objectReference: {fileID: 175837396}
+    - target: {fileID: 4026498437625800431, guid: ae84ecb3e457341aea2632f706b0c673,
+        type: 3}
       propertyPath: scoreController
       value: 
       objectReference: {fileID: 1615089875}
@@ -3780,7 +3799,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.8, y: 0.41, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

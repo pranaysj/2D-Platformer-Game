@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
 
     public TextMeshProUGUI playerHealthText;
 
+    public GameObject restartPanel;
+
     //Collider Variables
     private Vector2 boxColInitSize;
     private Vector2 boxColInitOffset;
@@ -143,7 +145,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DeathZone"))
         {
-            SceneManager.LoadScene("NewScene");
+            restartPanel.SetActive(true);
         }
     }
 
@@ -160,7 +162,9 @@ public class PlayerController : MonoBehaviour
         playerHealthText.text = "Health : " + playerHealth + " / 3";
         if (playerHealth == 0)
         {
-            SceneManager.LoadScene("NewScene");
+            restartPanel.SetActive(true);
+            this.enabled = false;
+
         }
     }
 }
