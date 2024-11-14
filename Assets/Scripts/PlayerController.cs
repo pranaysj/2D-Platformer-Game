@@ -148,4 +148,9 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Key is picked.");
         scoreController.IncreaseScore(10);
     }
+
+    public void KillPlayer()
+    {
+        //SceneManager.LoadScene("NewScene");
+    }
 }
