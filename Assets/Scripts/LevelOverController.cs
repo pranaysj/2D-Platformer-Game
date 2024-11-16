@@ -9,6 +9,7 @@ public class LevelOverController : MonoBehaviour
         if (collision.gameObject.GetComponent<PlayerController>() != null)
         {
             Debug.Log("Level is Complete!");
+            LevelManager.Instance.MakerCurrentLevelComplete();
         }
 
     }

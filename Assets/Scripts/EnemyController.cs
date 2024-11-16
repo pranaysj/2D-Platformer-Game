@@ -10,7 +10,6 @@ public class EnemyController : MonoBehaviour
         {
             PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
             playerController.KillPlayer();
-            Debug.Log("HITTTT");
         }
     }
 }

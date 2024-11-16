@@ -157,7 +157,6 @@ public class PlayerController : MonoBehaviour
 
     public void KillPlayer()
     {
-        Debug.Log("HIT.");
         playerHealth--;
         playerHealthText.text = "Health : " + playerHealth + " / 3";
         if (playerHealth == 0)
