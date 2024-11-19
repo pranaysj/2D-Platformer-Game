@@ -161,6 +161,7 @@ public class PlayerController : MonoBehaviour
         playerHealthText.text = "Health : " + playerHealth + " / 3";
         if (playerHealth == 0)
         {
+            SoundManager.Instance.PlayMusic(Sounds.PlayerDeath);
             restartPanel.SetActive(true);
             this.enabled = false;
 

@@ -1294,6 +1294,10 @@ MonoBehaviour:
   sounds:
   - soundTypes: 0
     soundClip: {fileID: 8300000, guid: df6d1af64fdebb04d80a54b27b720509, type: 3}
+  - soundTypes: 1
+    soundClip: {fileID: 8300000, guid: 0651b56880a11ef45909b779443691aa, type: 3}
+  - soundTypes: 3
+    soundClip: {fileID: 8300000, guid: 400c44a256b5eeb46897fd93bd481a00, type: 3}
 --- !u!4 &1139805316
 Transform:
   m_ObjectHideFlags: 0
