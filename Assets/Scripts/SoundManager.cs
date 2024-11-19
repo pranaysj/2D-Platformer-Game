@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource soundEffects;
     public AudioSource soundMusic;
+    public AudioSource soundPlayer;
 
     public SoundType[] sounds;
 
@@ -79,6 +80,23 @@ public class SoundManager : MonoBehaviour
             Debug.LogError("Clip not found for sound type : " + sound);
         }
     }
+    public void PlayMovementSound(Sounds sound)
+    {
+        if (isMute)
+            return;
+
+        AudioClip clip = GetSoundClip(sound);
+        if (clip != null)
+        {
+            soundPlayer.clip = clip;
+            soundPlayer.Play();
+        }
+        else
+        {
+            Debug.LogError("Clip not found for sound type : " + sound);
+        }
+    }
+
 
     private AudioClip GetSoundClip(Sounds sound)
     {

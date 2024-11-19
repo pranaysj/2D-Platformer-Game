@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 boxColInitOffset;
 
     private bool isGrounded = false;
+    private bool isMoveSoundPlaying = false;
 
     private void Awake()
     {
@@ -82,11 +83,17 @@ public class PlayerController : MonoBehaviour
         Vector3 scale = transform.localScale;
         if (horizontal < 0)
         {
+            MoveSound(true);
             scale.x = -1.0f * Mathf.Abs(scale.x);
         }
         else if (horizontal > 0)
         {
+            MoveSound(true);
             scale.x = Mathf.Abs(scale.x);
+        }
+        else
+        {
+            MoveSound(false);
         }
         transform.localScale = scale;
 
@@ -98,6 +105,25 @@ public class PlayerController : MonoBehaviour
         else
         {
             playerAnimator.SetBool("Jump", false);
+        }
+    }
+
+    private void MoveSound(bool msound)
+    {
+        if (msound)
+        {
+            if (msound && !isMoveSoundPlaying)
+            {
+                SoundManager.Instance.PlayMovementSound(Sounds.PlayerMove);
+                isMoveSoundPlaying = true;
+                SoundManager.Instance.soundPlayer.loop = true;
+            }
+
+        }
+        else if (!msound && isMoveSoundPlaying)
+        {
+            SoundManager.Instance.soundPlayer.loop = false;
+            isMoveSoundPlaying = false;
         }
     }
 
