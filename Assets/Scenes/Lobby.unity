@@ -1298,9 +1298,11 @@ MonoBehaviour:
   - soundTypes: 1
     soundClip: {fileID: 8300000, guid: 0651b56880a11ef45909b779443691aa, type: 3}
   - soundTypes: 3
-    soundClip: {fileID: 8300000, guid: 400c44a256b5eeb46897fd93bd481a00, type: 3}
+    soundClip: {fileID: 8300000, guid: 52659b3c95dc6427c9feef7fd4624f81, type: 3}
   - soundTypes: 2
     soundClip: {fileID: 8300000, guid: 375894471eb62624ca57c2d1d95eada3, type: 3}
+  - soundTypes: 4
+    soundClip: {fileID: 8300000, guid: 31b2284e8ab3f244182080ca7da474b7, type: 3}
   isMute: 0
   volume: 1
 --- !u!4 &1139805316

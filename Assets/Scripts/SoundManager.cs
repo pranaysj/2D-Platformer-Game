@@ -121,6 +121,8 @@ public enum Sounds
     ButtonClicks,
     Music,
     PlayerMove,
+    PlayerWin,
     PlayerDeath,
-    EnemyDeath
+    EnemyDeath,
+    NextLevel
 }

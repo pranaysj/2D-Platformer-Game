@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
         else if (!msound && isMoveSoundPlaying)
         {
             SoundManager.Instance.soundPlayer.loop = false;
-            isMoveSoundPlaying = false;
+            isMoveSoundPlaying = false; 
         }
     }
 
@@ -171,6 +171,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DeathZone"))
         {
+            SoundManager.Instance.Play(Sounds.PlayerDeath);
             restartPanel.SetActive(true);
         }
     }
@@ -187,7 +188,7 @@ public class PlayerController : MonoBehaviour
         playerHealthText.text = "Health : " + playerHealth + " / 3";
         if (playerHealth == 0)
         {
-            SoundManager.Instance.PlayMusic(Sounds.PlayerDeath);
+            SoundManager.Instance.Play(Sounds.PlayerDeath);
             restartPanel.SetActive(true);
             this.enabled = false;
 
