@@ -3293,12 +3293,12 @@ PrefabInstance:
     - target: {fileID: 6859850926154100629, guid: ae84ecb3e457341aea2632f706b0c673,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.4
+      value: -1.9
       objectReference: {fileID: 0}
     - target: {fileID: 6859850926154100629, guid: ae84ecb3e457341aea2632f706b0c673,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.8
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 6859850926154100629, guid: ae84ecb3e457341aea2632f706b0c673,
         type: 3}
@@ -3446,7 +3446,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1328216160
 BoxCollider2D:
   m_ObjectHideFlags: 0
