@@ -22,7 +22,7 @@ public class LevelLoader : MonoBehaviour
         LevelStatus levelStatus = LevelManager.Instance.GetLevelStatus(LevelName);
         switch (levelStatus)
         {
-            case LevelStatus.Locaked:
+            case LevelStatus.Locked:
                 Debug.Log("Can't open this level.");
                 break;
 

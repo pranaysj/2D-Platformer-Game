@@ -28,11 +28,6 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded = false;
     private bool isMoveSoundPlaying = false;
 
-    private void Awake()
-    {
-        rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
-    }
-
     private void Start()
     {
         //Fetching initial collider properties
